@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "IAMenuController"
   s.version      = "0.1"
-  s.summary      = "A simple, slide out menu controller container."
+  s.summary      = "A simple slide out menu controller container."
   s.homepage     = "https://github.com/21x9/IAMenuController"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Mark Adams" => "mark@thoughtbot.com" }
