@@ -125,7 +125,6 @@ NSString *const IAMenuDidCloseNotification = @"IAMenuDidCloseNotification";
 - (void)setupMenuViewController
 {
     [self addChildViewController:self.menuViewController];
-    self.menuViewController.view.frame = self.view.bounds;
     [self.view insertSubview:self.menuViewController.view belowSubview:self.contentView];
     [self.menuViewController didMoveToParentViewController:self];
 }
@@ -234,7 +233,7 @@ NSString *const IAMenuDidCloseNotification = @"IAMenuDidCloseNotification";
     CGPoint velocity = [pan velocityInView:self.contentView];
 
     CGFloat minimumX = 0.0f;
-    CGFloat maximumX = 276.0f;
+    CGFloat maximumX = self.menuViewController.view.frame.size.width;
 
     if (pan.state == UIGestureRecognizerStateBegan)
     {
@@ -304,7 +303,7 @@ NSString *const IAMenuDidCloseNotification = @"IAMenuDidCloseNotification";
 - (CGRect)contentViewFrameForOpenMenu
 {
     CGRect frame = self.contentView.frame;
-    frame.origin.x = 276.0f;
+    frame.origin.x = self.menuViewController.view.frame.size.width;
 
     return frame;
 }
@@ -320,7 +319,7 @@ NSString *const IAMenuDidCloseNotification = @"IAMenuDidCloseNotification";
 - (CGRect)contentViewFrameForStaging
 {
     CGRect frame = self.contentView.frame;
-    frame.origin.x = CGRectGetMaxX(self.view.frame) + 44.0f;
+    frame.origin.x = CGRectGetMaxX(self.view.frame) + (self.contentView.frame.size.width - self.menuViewController.view.frame.size.width);
 
     return frame;
 }
